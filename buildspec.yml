@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      dotnet: 6.0
+  pre_build:
+    commands:
+      - pwd
+      - dotnet restore MicroHomework/MicroHomework.WebApi/MicroHomework.WebApi.csproj
+  build:
+    commands:
+      - dotnet build MicroHomework/MicroHomework.WebApi/MicroHomework.WebApi.csproj
+  post_build:
+    commands:
+      - dotnet publish -c Release -o ./app/ MicroHomework/MicroHomework.WebApi/MicroHomework.WebApi.csproj
+artifacts:
+  files:
+    - '**/*'
